@@ -5,6 +5,8 @@ export default function PopupWithForm({
   isOpen,
   onClose,
   children,
+  onSubmit,
+  submitText
 }) {
   return (
     <div
@@ -18,11 +20,11 @@ export default function PopupWithForm({
           className="popup__exit"
           onClick={onClose}
         ></button>
-        <form className="popup__content">
+        <form className="popup__content" onSubmit={onSubmit}>
           <h2 className="popup__title ">{title}</h2>
           {children}
-          <button type="submit" className="popup__saved">
-            Сохранить
+          <button type="submit" className="popup__saved" >
+            {submitText}
           </button>
         </form>
       </div>

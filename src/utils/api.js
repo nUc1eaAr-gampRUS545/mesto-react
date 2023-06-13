@@ -20,11 +20,11 @@
       .then(this._checkResponse)
       
   }
-  addMyCards(name,link){ 
+  addMyCards(data){ 
     return fetch(`${this.#userUrl}/cards`, {
         method:"POST",
         headers:this.#headers,
-        body: JSON.stringify({name,link})
+        body: JSON.stringify(data)
         })
         .then(this._checkResponse)
   }
@@ -32,35 +32,29 @@
     return fetch(`${this.#userUrl}/users/me`, {
         method:"PATCH",
         headers:this.#headers,
-        body: JSON.stringify({name:data.name,about:data.job})
+        body: JSON.stringify(data)
         })
         .then(this._checkResponse)
   }
+  
   getInfo(){
     return fetch(`${this.#userUrl}/users/me`, {
       method:"GET",
       headers: this.#headers})
       .then(this._checkResponse)
   }
-  setLikes(data){  
+  setLikes(data,isLiked){  
   return fetch(`${this.#userUrl}/cards/${data}/likes`, {
-    method:"PUT",
+    method: (isLiked ? 'DELETE' : 'PUT'),
     headers:this.#headers})
     .then(this._checkResponse)
   }
 
-deleteLikes(data){
-  return fetch(`${this.#userUrl}/cards/${data}/likes`, {
-    method:"DELETE",
-    headers:this.#headers})
-    .then(this._checkResponse)
-  }
- 
 changeProfile(data){
   return fetch(`${this.#userUrl}/users/me/avatar`, {
     method:"PATCH",
     headers: this.#headers,
-    body: JSON.stringify({avatar: data.avatar})})
+    body: JSON.stringify(data)})
       .then(this._checkResponse)
 }  
 
