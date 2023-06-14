@@ -11,7 +11,10 @@ export default function AddPlacePopup({ onClose, isOpen, onAddPlaceSubmit }) {
       link: link,
     });
   }
- 
+  React.useEffect(() => {
+    setName('');
+    setLink('');
+}, [isOpen]);
   return (
     <PopupWithForm
       name="type_add-cards"
