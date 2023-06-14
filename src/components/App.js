@@ -126,11 +126,12 @@ function App() {
       .deleteCard(data)
       .then((items) => {
         setCards([items, ...cards]);
+        closeAllPopups();
       })
       .catch((err) => {
         console.error(err);
       });
-    closeAllPopups();
+    
   }
   return (
     <CurrentUserContext.Provider value={currentUser}>

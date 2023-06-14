@@ -31,6 +31,7 @@ export default function AddPlacePopup({ onClose, isOpen, onAddPlaceSubmit }) {
           name="name"
           minLength="2"
           required
+          value={name}
           maxLength="40"
           type="text"
           onChange={(e)=>{setName(e.target.value)}}
@@ -43,6 +44,7 @@ export default function AddPlacePopup({ onClose, isOpen, onAddPlaceSubmit }) {
           id="url"
           className="popup__input popup__input_type_add-cards"
           required
+          value={link}
           name="link"
           type="url"
           onChange={(e)=>{setLink(e.target.value)}}
